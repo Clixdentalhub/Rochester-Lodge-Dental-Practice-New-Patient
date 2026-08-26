@@ -410,6 +410,17 @@ main{padding-top:var(--header-h)}
 .ba-grid{display:grid;gap:var(--s-4)}
 @media (min-width:900px){.ba-grid{grid-template-columns:repeat(3,1fr);gap:var(--s-3)}}
 .ba{--pos:50;margin:0}
+.ba-filter{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-1) var(--s-2);margin-bottom:var(--s-3)}
+.ba-filter label{font-weight:600;color:var(--color-primary)}
+.ba-filter select{
+  appearance:none;-webkit-appearance:none;font:inherit;font-weight:600;color:var(--color-primary);
+  background:var(--color-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231E2238' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 18px center;
+  border:1.5px solid var(--color-primary);border-radius:var(--r-pill);
+  padding:12px 46px 12px 20px;cursor:pointer;max-width:100%;
+}
+.ba-filter select:hover{border-color:var(--color-primary-dark);box-shadow:0 6px 16px -8px rgba(20,23,42,.35)}
+.ba-filter select:focus-visible{outline:3px solid var(--color-accent);outline-offset:2px}
+.ba-filter__count{font-size:.92rem;color:var(--color-foreground-mut)}
 .ba__frame{position:relative;aspect-ratio:2/1;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--color-border)}
 .ba__layer{position:absolute;inset:0;isolation:isolate}
 .ba__layer .media,.ba__layer img{position:absolute;inset:0;width:100%;height:100%}
@@ -873,10 +884,20 @@ main{padding-top:var(--header-h)}
       <div class="section__head reveal">
         <p class="eyebrow">Real patients</p>
         <h2 id="resultsTitle">See the difference for&nbsp;yourself</h2>
-        <p>Drag the handle to compare. Real Rochester Lodge patients, treated by Dr&nbsp;Ali.</p>
+        <p>Pick the treatment you're curious about, then drag the handle to compare. Real Rochester Lodge patients, treated by Dr&nbsp;Ali.</p>
+      </div>
+      <div class="ba-filter reveal">
+        <label for="baCat">Show results for</label>
+        <select id="baCat">
+          <option value="makeover" selected>Complete smile makeovers</option>
+          <option value="bonding">Composite bonding</option>
+          <option value="veneers">Veneers</option>
+          <option value="aligners">Clear aligners</option>
+        </select>
+        <p class="ba-filter__count" id="baCount" aria-live="polite"></p>
       </div>
       <div class="ba-grid">
-        <figure class="ba reveal" style="--i:0">
+        <figure class="ba reveal" style="--i:0" data-cat="makeover">
           <div class="ba__frame">
             <div class="ba__layer ba__layer--after">
               <div class="media" data-file="assets/case-1-after.webp"><img src="assets/case-1-after.webp" alt="Case 1 after treatment at Rochester Lodge" loading="lazy"></div>
@@ -891,7 +912,7 @@ main{padding-top:var(--header-h)}
           </div>
           <figcaption>Case 1 — Gaps closed and worn edges rebuilt with composite bonding, finished with whitening</figcaption>
         </figure>
-        <figure class="ba reveal" style="--i:1">
+        <figure class="ba reveal" style="--i:1" data-cat="makeover">
           <div class="ba__frame">
             <div class="ba__layer ba__layer--after">
               <div class="media" data-file="assets/case-2-after.webp"><img src="assets/case-2-after.webp" alt="Case 2 after treatment at Rochester Lodge" loading="lazy"></div>
@@ -906,7 +927,7 @@ main{padding-top:var(--header-h)}
           </div>
           <figcaption>Case 2 — Full set of hand-layered composite veneers with boutique whitening</figcaption>
         </figure>
-        <figure class="ba reveal" style="--i:2">
+        <figure class="ba reveal" style="--i:2" data-cat="makeover">
           <div class="ba__frame">
             <div class="ba__layer ba__layer--after">
               <div class="media" data-file="assets/case-3-after.webp"><img src="assets/case-3-after.webp" alt="Case 3 after treatment at Rochester Lodge" loading="lazy"></div>
@@ -921,7 +942,7 @@ main{padding-top:var(--header-h)}
           </div>
           <figcaption>Case 3 — Uneven shade and shape corrected with composite veneers, plus whitening</figcaption>
         </figure>
-        <figure class="ba reveal" style="--i:0">
+        <figure class="ba reveal" style="--i:0" data-cat="makeover">
           <div class="ba__frame">
             <div class="ba__layer ba__layer--after">
               <div class="media" data-file="assets/case-4-after.webp"><img src="assets/case-4-after.webp" alt="Case 4 after treatment at Rochester Lodge" loading="lazy"></div>
@@ -936,7 +957,7 @@ main{padding-top:var(--header-h)}
           </div>
           <figcaption>Case 4 — Deep discolouration masked and worn edges rebuilt with composite veneers and whitening</figcaption>
         </figure>
-        <figure class="ba reveal" style="--i:1">
+        <figure class="ba reveal" style="--i:1" data-cat="makeover">
           <div class="ba__frame">
             <div class="ba__layer ba__layer--after">
               <div class="media" data-file="assets/case-5-after.webp"><img src="assets/case-5-after.webp" alt="Case 5 after treatment at Rochester Lodge" loading="lazy"></div>
@@ -951,7 +972,7 @@ main{padding-top:var(--header-h)}
           </div>
           <figcaption>Case 5 — Uneven, stained upper teeth levelled and brightened with composite bonding and whitening</figcaption>
         </figure>
-        <figure class="ba reveal" style="--i:2">
+        <figure class="ba reveal" style="--i:2" data-cat="makeover">
           <div class="ba__frame">
             <div class="ba__layer ba__layer--after">
               <div class="media" data-file="assets/case-6-after.webp"><img src="assets/case-6-after.webp" alt="Case 6 after treatment at Rochester Lodge" loading="lazy"></div>
@@ -965,6 +986,141 @@ main{padding-top:var(--header-h)}
             <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — case 6">
           </div>
           <figcaption>Case 6 — Subtle composite edge bonding and whitening — a natural refresh</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:0" data-cat="bonding" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/bond-1-after.webp"><img src="assets/bond-1-after.webp" alt="Bonding case 1 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/bond-1-before.webp"><img src="assets/bond-1-before.webp" alt="Bonding case 1 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — bonding case 1">
+          </div>
+          <figcaption>Bonding case 1 — Uneven, discoloured front teeth reshaped and brightened with composite bonding</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:1" data-cat="bonding" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/bond-2-after.webp"><img src="assets/bond-2-after.webp" alt="Bonding case 2 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/bond-2-before.webp"><img src="assets/bond-2-before.webp" alt="Bonding case 2 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — bonding case 2">
+          </div>
+          <figcaption>Bonding case 2 — Worn, uneven edges rebuilt for a fuller, brighter smile</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:2" data-cat="bonding" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/bond-3-after.webp"><img src="assets/bond-3-after.webp" alt="Bonding case 3 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/bond-3-before.webp"><img src="assets/bond-3-before.webp" alt="Bonding case 3 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — bonding case 3">
+          </div>
+          <figcaption>Bonding case 3 — Discolouration masked and edges evened with composite bonding</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:0" data-cat="bonding" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/bond-4-after.webp"><img src="assets/bond-4-after.webp" alt="Bonding case 4 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/bond-4-before.webp"><img src="assets/bond-4-before.webp" alt="Bonding case 4 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — bonding case 4">
+          </div>
+          <figcaption>Bonding case 4 — Staining and uneven shapes corrected with composite bonding</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:1" data-cat="bonding" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/bond-5-after.webp"><img src="assets/bond-5-after.webp" alt="Bonding case 5 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/bond-5-before.webp"><img src="assets/bond-5-before.webp" alt="Bonding case 5 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — bonding case 5">
+          </div>
+          <figcaption>Bonding case 5 — Overlapping, stained front teeth balanced and refreshed</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:2" data-cat="bonding" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/bond-6-after.webp"><img src="assets/bond-6-after.webp" alt="Bonding case 6 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/bond-6-before.webp"><img src="assets/bond-6-before.webp" alt="Bonding case 6 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — bonding case 6">
+          </div>
+          <figcaption>Bonding case 6 — Subtle composite edge bonding, seen from the side</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:0" data-cat="veneers" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/ven-1-after.webp"><img src="assets/ven-1-after.webp" alt="Veneers case 1 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/ven-1-before.webp"><img src="assets/ven-1-before.webp" alt="Veneers case 1 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — veneers case 1">
+          </div>
+          <figcaption>Veneers case 1 — A complete shade and shape transformation with veneers</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:1" data-cat="veneers" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/ven-2-after.webp"><img src="assets/ven-2-after.webp" alt="Veneers case 2 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/ven-2-before.webp"><img src="assets/ven-2-before.webp" alt="Veneers case 2 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — veneers case 2">
+          </div>
+          <figcaption>Veneers case 2 — Uneven, discoloured teeth transformed with veneers</figcaption>
+        </figure>
+        <figure class="ba reveal" style="--i:0" data-cat="aligners" hidden>
+          <div class="ba__frame">
+            <div class="ba__layer ba__layer--after">
+              <div class="media" data-file="assets/align-1-after.webp"><img src="assets/align-1-after.webp" alt="Aligner case 1 after treatment at Rochester Lodge" loading="lazy"></div>
+              <span class="ba__tag ba__tag--after">After</span>
+            </div>
+            <div class="ba__layer ba__layer--before">
+              <div class="media" data-file="assets/align-1-before.webp"><img src="assets/align-1-before.webp" alt="Aligner case 1 before treatment" loading="lazy"></div>
+              <span class="ba__tag ba__tag--before">Before</span>
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after — aligner case 1">
+          </div>
+          <figcaption>Aligner case 1 — Crowded, uneven front teeth gently straightened with clear aligners</figcaption>
         </figure>
       </div>
     </div>
@@ -1366,6 +1522,24 @@ var CONFIG = {
       ba.style.setProperty('--pos', range.value);
     });
   });
+
+  /* ---------- Before/after category filter ---------- */
+  var baCat = document.getElementById('baCat');
+  if (baCat) {
+    var baFigs = Array.prototype.slice.call(document.querySelectorAll('.ba-grid .ba'));
+    var baCount = document.getElementById('baCount');
+    var applyBaCat = function(revealNow){
+      var shown = 0;
+      baFigs.forEach(function(figEl){
+        var show = figEl.getAttribute('data-cat') === baCat.value;
+        figEl.hidden = !show;
+        if (show) { shown++; if (revealNow) figEl.classList.add('in'); }
+      });
+      if (baCount) baCount.textContent = shown + (shown === 1 ? ' case' : ' cases');
+    };
+    baCat.addEventListener('change', function(){ applyBaCat(true); });
+    applyBaCat(false);
+  }
 
   /* ---------- Practice gallery: scroll-snap track + step buttons ---------- */
   var galTrack = document.getElementById('galTrack');
