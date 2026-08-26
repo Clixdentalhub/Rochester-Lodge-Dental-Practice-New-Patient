@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Permanent noindex: a confirmation page that ranks is one people reach
+     without converting, which silently inflates every conversion fired on it. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Thank You | Rochester Lodge Dental Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Same token block as index.html — Rochester Lodge brand palette (navy #1E2238, gold CTA #A28B4E, logo gold #AF9651) */
+:root{
+  --color-primary:#1E2238;
+  --color-primary-dark:#14172A;
+  --color-on-primary:#FFFFFF;
+  --color-on-primary-mut:#C9CDDB;
+  --color-accent:#A28B4E;
+  --color-accent-dark:#6E5D31;
+  --color-on-accent:#14172A;
+  --cta-on-dark:#D9BC6F;
+  --cta-on-dark-text:#14172A;
+  --color-flourish:#AF9651;
+  --color-background:#F8F9FB;
+  --color-surface:#FFFFFF;
+  --color-foreground:#14172A;
+  --color-foreground-mut:#545A73;
+  --color-border:#D9DCE3;
+  --color-border-strong:#A6ABBA;
+  --color-success:#15803D;
+  --color-star:#CA8A04;
+  --font-head:"Marcellus",Georgia,"Times New Roman",serif;
+  --font-body:"Raleway",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --r-sm:8px; --r-md:12px; --r-lg:20px; --r-pill:999px;
+  --s-1:8px; --s-2:16px; --s-3:24px; --s-4:32px; --s-5:48px; --s-6:64px; --s-7:80px;
+  --d-fast:240ms; --d-med:460ms; --d-slow:680ms;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --header-h:64px;
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);color:var(--color-foreground);background:var(--color-background);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-head);font-weight:400;line-height:1.15;text-wrap:balance}
+p{text-wrap:pretty}
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--s-3)}
+.ph{background:#FEF3C7;color:#92400E;border:1px dashed #D97706;border-radius:4px;padding:0 .3em;font-weight:500;font-size:.9em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-weight:600;font-size:1rem;line-height:1.2;padding:14px 26px;border-radius:var(--r-pill);border:1px solid transparent;cursor:pointer;text-decoration:none;transition:transform var(--d-fast) var(--ease),box-shadow var(--d-fast) var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:3px solid var(--cta-on-dark);outline-offset:2px}
+.btn--gold{background:var(--cta-on-dark);color:var(--cta-on-dark-text)}
+.btn--ghost-dark{background:transparent;color:var(--color-on-primary);border-color:rgba(255,255,255,.35)}
+
+.header{background:var(--color-primary);border-bottom:1px solid rgba(255,255,255,.12)}
+.header .container{display:flex;align-items:center;justify-content:center;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-on-primary)}
+.brand__mark{color:var(--color-flourish);display:grid;place-items:center;padding:4px 0}
+
+/* Dark confirmation band — reuses the funnel form-card treatment so the
+   visitor feels they're still inside the thing they just filled in */
+.confirm{position:relative;isolation:isolate;overflow:hidden;background:var(--color-primary-dark);color:var(--color-on-primary);text-align:center;padding-block:var(--s-7)}
+.confirm::before{content:"";position:absolute;left:50%;bottom:-220px;width:120%;height:360px;z-index:-1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(217,188,111,.20) 0%,transparent 65%)}
+.confirm svg{margin-inline:auto}
+.confirm .ring{stroke-dasharray:151;stroke-dashoffset:151;animation:draw var(--d-slow) var(--ease) forwards}
+.confirm .tickpath{stroke-dasharray:36;stroke-dashoffset:36;animation:draw var(--d-med) var(--ease) 380ms forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.confirm h1{font-size:clamp(1.9rem,5.5vw,2.8rem);margin-top:var(--s-3)}
+.confirm p{color:var(--color-on-primary-mut);max-width:52ch;margin:var(--s-2) auto 0;font-size:1.05rem}
+
+.section{padding-block:var(--s-6)}
+.section__head{max-width:680px;margin:0 auto var(--s-4);text-align:center}
+.section__head h2{font-size:clamp(1.6rem,4.2vw,2.2rem)}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-dark);margin-bottom:var(--s-2)}
+
+.steps ol{list-style:none;display:grid;gap:var(--s-4);counter-reset:step}
+@media (min-width:900px){.steps ol{grid-template-columns:repeat(3,1fr);gap:var(--s-3)}}
+.steps li{position:relative;counter-increment:step;text-align:center;opacity:0;transform:translateY(24px);animation:rise var(--d-slow) var(--ease) forwards;animation-delay:calc(var(--i) * 140ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+.jnum{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-head);font-weight:400;font-size:1.3rem;background:var(--color-primary);color:var(--cta-on-dark);margin:0 auto var(--s-2)}
+.jnum::before{content:counter(step)}
+.steps h3{font-size:1.12rem}
+.steps li p{margin-top:8px;font-size:.94rem;color:var(--color-foreground-mut);max-width:34ch;margin-inline:auto}
+
+.callband{background:var(--color-primary);color:var(--color-on-primary);padding-block:var(--s-5)}
+.callband .container{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;justify-content:space-between}
+.callband h2{font-size:1.4rem}
+.callband p{color:var(--color-on-primary-mut);font-size:.95rem;margin-top:6px}
+
+.prep ul{list-style:none;display:grid;gap:var(--s-2);max-width:640px;margin-inline:auto}
+.prep li{display:flex;gap:12px;align-items:flex-start;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--r-md);padding:var(--s-2) var(--s-3);font-size:.96rem}
+.prep svg{flex:none;color:var(--color-success);margin-top:3px}
+
+.proof{background:var(--color-surface);text-align:center}
+.proof .stars{display:inline-flex;gap:3px;color:var(--color-star);margin-bottom:14px}
+.rotator{display:grid;max-width:62ch;margin-inline:auto}
+.rotator blockquote{grid-area:1/1;opacity:0;transition:opacity var(--d-slow) var(--ease);pointer-events:none;font-size:1.05rem}
+.rotator blockquote.on{opacity:1;pointer-events:auto}
+.rotator blockquote::before{content:"\201C";display:block;font-family:var(--font-head);font-size:2.2rem;line-height:.6;color:var(--color-flourish);margin-bottom:10px}
+.rotator cite{display:block;margin-top:12px;font-style:normal;font-weight:600;font-size:.9rem}
+.rdots{display:flex;gap:7px;justify-content:center;margin-top:var(--s-3)}
+.rdots button{width:9px;height:9px;border-radius:50%;border:0;padding:0;background:var(--color-border-strong);cursor:pointer;transition:background-color var(--d-fast) var(--ease),transform var(--d-fast) var(--ease)}
+.rdots button.on{background:var(--color-flourish);transform:scale(1.25)}
+.rdots button:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
+
+.footer{background:var(--color-primary-dark);color:var(--color-on-primary-mut);padding-block:var(--s-5) calc(var(--s-5) + 76px)}
+@media (min-width:900px){.footer{padding-bottom:var(--s-5)}}
+.footer p{font-size:.84rem;line-height:1.7;max-width:75ch}
+.footer strong{color:var(--color-on-primary)}
+.footer .container{display:grid;gap:var(--s-2)}
+
+/* One action in the mobile bar — they have already converted */
+.sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:100;display:flex;padding:10px var(--s-2) calc(10px + env(safe-area-inset-bottom));background:rgba(16,18,34,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.14)}
+.sticky-bar .btn{flex:1;padding-block:13px;font-size:.95rem}
+@media (min-width:900px){.sticky-bar{display:none}}
+
+@media (prefers-reduced-motion: reduce){
+  .confirm .ring,.confirm .tickpath{stroke-dashoffset:0;animation:none}
+  .rotator blockquote{transition:none}
+  .steps li{opacity:1;transform:none;animation:none}
+  .btn,.btn:hover{transition:none;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true">
+        <svg width="46" height="56" viewBox="0 0 75 92" fill="currentColor" aria-hidden="true"><path d="M64.353 91.049H25.539V35.327h3.48v52.266h31.653l3.68 3.456z"/><path d="M56.546 41.526c0 7.017-5.756 12.727-12.829 12.727h-7.54v3.122L72.585 91.05h2.425V22.27L37.505 0 0 22.27v68.776h17.898V28.795h25.82c7.072 0 12.828 5.71 12.828 12.728v.002zM14.418 25.341v62.251H3.48V24.23L37.505 4.025 71.529 24.23v61.122L41.642 57.706h2.075c8.993 0 16.309-7.258 16.309-16.183S52.71 25.342 43.717 25.342h-29.3z"/></svg>
+      </span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- ==================== CONFIRMATION ==================== -->
+  <section class="confirm" aria-labelledby="confirmTitle">
+    <div class="container">
+      <svg width="88" height="88" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <circle class="ring" cx="28" cy="28" r="24" stroke="var(--cta-on-dark)" stroke-width="2.5"/>
+        <path class="tickpath" d="M17 29l7.5 7.5L39 21" stroke="var(--cta-on-dark)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1 id="confirmTitle"><span id="greetName">Thank you</span> — your enquiry is&nbsp;in</h1>
+      <p>The Rochester Lodge team will be in touch shortly to arrange your £50 new patient check-up. Keep an eye on your phone and inbox.</p>
+    </div>
+  </section>
+
+  <!--
+  ============================================================
+  CONVERSION EVENT — the single place a lead is counted.
+  Paste the Meta Pixel Lead event / Google Ads conversion tag
+  HERE and nowhere else. index.html deliberately fires nothing
+  on submit: firing in both places double-counts every lead.
+  ============================================================
+  -->
+
+  <!-- ==================== WHAT HAPPENS NEXT ==================== -->
+  <section class="section steps" aria-labelledby="nextTitle">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">What happens next</p>
+        <h2 id="nextTitle">Three simple steps from&nbsp;here</h2>
+      </div>
+      <ol>
+        <li style="--i:0">
+          <span class="jnum" aria-hidden="true"></span>
+          <h3>We call you</h3>
+          <p>A member of the team confirms an appointment time that suits you and answers any first questions.</p>
+        </li>
+        <li style="--i:1">
+          <span class="jnum" aria-hidden="true"></span>
+          <h3>Your £50 check-up</h3>
+          <p>A thorough new patient examination with your dentist — reduced from £72 to £50.</p>
+        </li>
+        <li style="--i:2">
+          <span class="jnum" aria-hidden="true"></span>
+          <h3>Your brighter smile</h3>
+          <p>Safe, dentist-led whitening with £100 off — even, natural brightness that suits you.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ==================== CALL BAND ==================== -->
+  <section class="callband" aria-labelledby="callTitle">
+    <div class="container">
+      <div>
+        <h2 id="callTitle">Rather talk it through now?</h2>
+        <p>The team is happy to answer anything before your consultation.</p>
+      </div>
+      <a class="btn btn--gold js-call" href="index.html#faq">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        <span>Call <span class="ph" data-ph="phone">[phone]</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==================== BEFORE YOUR CALL ==================== -->
+  <section class="section prep" aria-labelledby="prepTitle">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Worth a thought</p>
+        <h2 id="prepTitle">Before we speak</h2>
+      </div>
+      <ul>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>How long has it been since your last check-up? No judgement — it just helps us plan your visit.</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Interested in whitening? Mention it at your check-up and your dentist will talk you through it with your £100 off.</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Any questions about pricing? Bring them along — every cost is itemised and explained before you commit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== SOCIAL PROOF ==================== -->
+  <section class="section proof" aria-labelledby="proofTitle">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">You're in good hands</p>
+        <h2 id="proofTitle">Over 100 five-star reviews</h2>
+      </div>
+      <span class="stars" aria-label="5 out of 5 stars">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </span>
+      <div class="rotator" id="reviewRotator" aria-live="polite"></div>
+      <div class="rdots" id="reviewDots" role="tablist" aria-label="Choose review"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>Rochester Lodge Dental Practice</strong> · 14 Rochester Avenue, Bromley, Kent BR1 3DD · <span data-ph="phone">07446 462551</span> · <a href="mailto:reception@rochesterlodge.co.uk" style="color:var(--cta-on-dark)">reception@rochesterlodge.co.uk</a></p>
+    <p>Dr Ali Ghomeshi BDS, Cosmetic Dentist · GDC No. 265728.</p>
+  </div>
+</footer>
+
+<div class="sticky-bar">
+  <a class="btn btn--gold js-call" href="index.html#faq">Call the practice</a>
+</div>
+
+<script>
+'use strict';
+var CONFIG = {
+  phone: '+447446462551',        // GHL tracking number — keep in sync with index.html
+  phoneDisplay: '07446 462551'
+};
+(function(){
+  if (CONFIG.phone) {
+    document.querySelectorAll('.js-call').forEach(function(a){ a.setAttribute('href','tel:' + CONFIG.phone); });
+    document.querySelectorAll('[data-ph="phone"]').forEach(function(el){
+      el.textContent = CONFIG.phoneDisplay || CONFIG.phone;
+      el.classList.remove('ph');
+    });
+  }
+  /* Personalised greeting — the query-string value is attacker-controlled.
+     Written with textContent only, and screened first: anything that isn't
+     plausibly a name is dropped rather than printed. */
+  /* Rotating Google reviews — crossfade every 5s, dots to jump, paused for reduced motion */
+  var REVIEWS = [
+    ["I can't thank Ali and the team at Rochester Lodge enough. The procedure itself was easy and painless, and I'm absolutely delighted with the final result!", "Charlie M."],
+    ["Been with this practice nearly 40 years. Ali has just replaced two front veneers with composites, as well as teeth whitening. Really happy with the result.", "Caroline D."],
+    ["I had the Icon White Spot Treatment here around 2 months ago, and I am still amazed by the results. Dr Ali Ghomeshi was incredibly patient and walked me through the entire process.", "Sha"],
+    ["I am a very nervous patient, but trusted my lovely dentist Ali with the job in hand. He was absolutely brilliant.", "Connie G."],
+    ["Can't recommend this practice highly enough. I needed an emergency appointment at short notice and they went above and beyond to fit me in.", "Jamie H."],
+    ["Such a wonderful experience at this dental practice, excellent staff, friendly, warm, welcoming and incredibly professional, can't fault it.", "Hannah"],
+    ["Lovely, kind, friendly caring team. They listened to my concerns and delivered a great service. Clear communication throughout my treatment and a real gentle approach.", "Nadia B."],
+    ["My teeth were yellow and crooked, I was feeling down and low. Dr Ghomeshi and the team at Rochester Lodge made them white and straight, so now I'm happy and confident!", "George A."],
+    ["Always a fantastic experience at Rochester Lodge Dental Practice. The staff are incredibly friendly, and informative, and it always helps me feel at ease.", "Aaron G."],
+    ["I could not be happier with my new smile! Ali is an absolute superstar of a dentist.", "Debbie P."]
+  ];
+  var rot = document.getElementById('reviewRotator');
+  var dots = document.getElementById('reviewDots');
+  if (rot) {
+    var rMotionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    REVIEWS.forEach(function(r, i){
+      var b = document.createElement('blockquote');
+      var pEl = document.createElement('p'); pEl.textContent = r[0];
+      var c = document.createElement('cite'); c.textContent = r[1] + ' \u00b7 Google review';
+      b.appendChild(pEl); b.appendChild(c);
+      if (i === 0) b.className = 'on';
+      rot.appendChild(b);
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Review ' + (i + 1) + ' of ' + REVIEWS.length);
+      if (i === 0) d.className = 'on';
+      d.addEventListener('click', function(){ show(i); restart(); });
+      dots.appendChild(d);
+    });
+    var cur = 0, timer = null;
+    var quotes = rot.querySelectorAll('blockquote');
+    var dbtns = dots.querySelectorAll('button');
+    function show(i){
+      quotes[cur].classList.remove('on'); dbtns[cur].classList.remove('on');
+      cur = i;
+      quotes[cur].classList.add('on'); dbtns[cur].classList.add('on');
+    }
+    function restart(){
+      if (!rMotionOK) return;
+      clearInterval(timer);
+      timer = setInterval(function(){ show((cur + 1) % REVIEWS.length); }, 5000);
+    }
+    rot.addEventListener('pointerenter', function(){ clearInterval(timer); });
+    rot.addEventListener('pointerleave', restart);
+    restart();
+  }
+
+  var name = new URLSearchParams(location.search).get('name') || '';
+  name = name.trim();
+  if (name && name.length <= 30 && /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/.test(name)) {
+    var pretty = name.charAt(0).toUpperCase() + name.slice(1);
+    document.getElementById('greetName').textContent = 'Thank you, ' + pretty;
+  }
+})();
+</script>
+</body>
+</html>
