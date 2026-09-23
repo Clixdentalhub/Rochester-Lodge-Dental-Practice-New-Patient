@@ -1379,6 +1379,37 @@ var CONFIG = {
 
   /* ---------- Hero variants: ?src= (meta default | google) and ?angle= ---------- */
   var params = new URLSearchParams(location.search);
+
+  /* ---------- Attribution capture (Meta URL params + click IDs + cookies) ----------
+     Set these in the Meta ad's URL Parameters field so Facebook fills them per click:
+       utm_source=facebook&utm_medium={{placement}}&utm_campaign={{campaign.name}}
+       &campaign_id={{campaign.id}}&adset_id={{adset.id}}&adset_name={{adset.name}}
+       &ad_id={{ad.id}}&utm_content={{ad.name}}
+     Every value below is forwarded in the webhook payload; map each to a GHL custom field. */
+  function cookie(name){
+    var m = document.cookie.match('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\/+^])/g,'\\$1') + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function attribution(){
+    var g = function(k){ return params.get(k) || ''; };
+    return {
+      utm_source:   g('utm_source'),
+      utm_medium:   g('utm_medium'),
+      utm_campaign: g('utm_campaign'),
+      utm_content:  g('utm_content'),
+      utm_term:     g('utm_term'),
+      campaign_id:  g('campaign_id'),
+      adset_id:     g('adset_id'),
+      adset_name:   g('adset_name'),
+      ad_id:        g('ad_id'),
+      fbclid:       g('fbclid'),
+      gclid:        g('gclid'),
+      fbp:          cookie('_fbp'),
+      fbc:          cookie('_fbc'),
+      referrer:     document.referrer || ''
+    };
+  }
+
   var variants = {
     meta: {
       eyebrow: 'Bromley · New Patient Offer at Rochester Lodge',
@@ -1729,6 +1760,7 @@ var CONFIG = {
         angle: params.get('angle') || '',
         page: location.href
       };
+      Object.assign(payload, attribution());
       try {
         fetch(CONFIG.webhookUrl, {
           method: 'POST',
