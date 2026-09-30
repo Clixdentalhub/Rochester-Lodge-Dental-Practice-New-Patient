@@ -213,7 +213,7 @@ p{text-wrap:pretty}
 main{padding-top:var(--header-h)}
 
 /* ============ Hero ============ */
-.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#EDF0F6 0%,var(--color-background) 78%)}
+.hero{position:relative;isolation:isolate;background:linear-gradient(180deg,#EDF0F6 0%,var(--color-background) 78%)}
 /* Calm-drift blooms — weighted to the base of the band, never behind the headline
    and never behind the form column */
 .hero__motion{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
@@ -262,10 +262,18 @@ main{padding-top:var(--header-h)}
 }
 .media img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;color:transparent}
 @media (min-width:900px){
-  .hero__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:var(--s-6);padding-block:var(--s-6) var(--s-7)}
+  .hero__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start;gap:var(--s-6);padding-block:var(--s-6) var(--s-7)}
+  .hero__copy{position:sticky;top:calc(var(--header-h) + var(--s-3));align-self:start}
 }
 
 /* ============ Qualifier form — "Ink Atelier" treatment ============ */
+.hero__video{
+  margin-bottom:var(--s-3);border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);background:#000;
+  box-shadow:0 24px 48px -28px rgba(10,12,24,.5);
+}
+.hero__video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:#000}
+@media (min-width:900px){.hero__video video{aspect-ratio:16/9}}
 .qform{
   position:relative;isolation:isolate;overflow:hidden;
   background:var(--color-primary-dark);color:var(--color-on-primary);
@@ -685,6 +693,12 @@ main{padding-top:var(--header-h)}
 
       <!-- ==================== 3-STEP QUALIFIER FORM ==================== -->
       <div id="enquire">
+        <div class="hero__video reveal">
+          <video controls playsinline preload="metadata" aria-label="Rochester Lodge new patient offer">
+            <source src="https://assets.cdn.filesafe.space/Dloc47o0jzITI0jDq2qP/media/6abd210ef88ee1436cba52fa.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <form class="qform" id="qualifierForm" novalidate aria-labelledby="qformTitle">
           <p class="qform__eyebrow">New patient offer</p>
           <h2 class="qform__title" id="qformTitle">Book your £50 check-up</h2>
