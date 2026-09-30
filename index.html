@@ -274,6 +274,24 @@ main{padding-top:var(--header-h)}
 }
 .hero__video video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:#000}
 @media (min-width:900px){.hero__video video{aspect-ratio:16/9}}
+.hero__video{position:relative}
+.hero__video__play{
+  position:absolute;inset:0;margin:auto;width:78px;height:78px;
+  display:grid;place-items:center;border:none;border-radius:50%;cursor:pointer;
+  background:var(--color-accent);color:var(--color-on-accent);
+  box-shadow:0 12px 32px -8px rgba(0,0,0,.55);
+  transition:transform var(--d-fast) var(--ease),background var(--d-fast) var(--ease);
+}
+.hero__video__play svg{margin-left:4px}
+.hero__video__play:hover{transform:scale(1.07);background:var(--cta-on-dark)}
+.hero__video__play:focus-visible{outline:3px solid var(--cta-on-dark);outline-offset:3px}
+.hero__video__label{
+  position:absolute;left:0;right:0;bottom:12px;text-align:center;pointer-events:none;
+  color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.02em;
+  text-shadow:0 1px 6px rgba(0,0,0,.6);
+}
+.hero__video.is-playing .hero__video__play,
+.hero__video.is-playing .hero__video__label{display:none}
 .qform{
   position:relative;isolation:isolate;overflow:hidden;
   background:var(--color-primary-dark);color:var(--color-on-primary);
@@ -698,6 +716,10 @@ main{padding-top:var(--header-h)}
             <source src="https://assets.cdn.filesafe.space/Dloc47o0jzITI0jDq2qP/media/6abd210ef88ee1436cba52fa.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <button type="button" class="hero__video__play" aria-label="Play video">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="hero__video__label">Watch the 60-second intro</span>
         </div>
         <form class="qform" id="qualifierForm" novalidate aria-labelledby="qformTitle">
           <p class="qform__eyebrow">New patient offer</p>
@@ -1803,6 +1825,16 @@ var CONFIG = {
   });
 
   goTo(0);
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.hero__video').forEach(function(w){
+    var v=w.querySelector('video'), b=w.querySelector('.hero__video__play');
+    if(!v||!b) return;
+    b.addEventListener('click',function(){ w.classList.add('is-playing'); v.play(); });
+    v.addEventListener('play',function(){ w.classList.add('is-playing'); });
+  });
 })();
 </script>
 </body>
